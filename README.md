@@ -29,51 +29,6 @@ A fun and interactive **Slot Machine Simulator** implemented in JavaScript! Test
 | 🍊     | 6     | 3     |
 | 🍇     | 8     | 2     |
 
-## 💻 Code Example with Copy Button
-
-
-```html
-<div>
-  <pre>
-    <code id="slotMachineCode">
-      const prompt = require("prompt-sync")();
-
-      const MAX_LINES = 3;
-      const MIN_LINES = 1;
-      const ROWS = 3;
-      const COLS = 3;
-
-      const SYMBOLS = [
-          { symbol: '🍒', count: 2, value: 5 },
-          { symbol: '🍋', count: 4, value: 4 },
-          { symbol: '🍊', count: 6, value: 3 },
-          { symbol: '🍇', count: 8, value: 2 },
-      ];
-
-      const deposit = () => { /* Your code */ };
-      const getNumberOfLines = () => { /* Your code */ };
-      const getBet = (balance, numberOfLines) => { /* Your code */ };
-      const spine = () => { /* Your code */ };
-      const trasnpose = (reels) => { /* Your code */ };
-      const printRows = (rows) => { /* Your code */ };
-      const getWinnings = (rows, bet, lines) => { /* Your code */ };
-      const game = () => { /* Your code */ };
-
-      game();
-    </code>
-  </pre>
-  <button onclick="copyCode()">Copy Code</button>
-</div>
-
-<script>
-  function copyCode() {
-    const code = document.getElementById("slotMachineCode").innerText;
-    navigator.clipboard.writeText(code).then(() => {
-      alert("Code copied to clipboard!");
-    });
-  }
-</script>
-```
 
 ## 🎉 Example Gameplay
 
