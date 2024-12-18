@@ -10,6 +10,7 @@
 
 
 prompt = require("prompt-sync")();
+
 const MAX_LINES = 3;
 const MIN_LINES = 1;
 const ROWS = 3;
@@ -18,17 +19,19 @@ const COLS = 3;
 const reelsSymbol = ['🍒', '🍋', '🍊', '🍇', '🍉'];
 
 const SYMBOL_COUNT = {
-    A: 2,
-    B: 4,
-    c: 6,
-    D: 8,
+    '🍒': 2,
+    '🍋': 6,
+    '🍊': 8,
+    '🍇': 10,
+
+
 };
 
 const SYMBOL_VALUE = {
-    A: 5,
-    B: 4,
-    C: 3,
-    D: 2,
+    '🍒': 5,
+    '🍋': 4,
+    '🍊': 3,
+    '🍇': 2,
 };
 
 const deposit = () => {
