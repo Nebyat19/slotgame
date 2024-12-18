@@ -1,14 +1,3 @@
-
-/**** Tasks */
-// 1. Deposit Money
-// 2. Determine number of line
-// 3. Collect bet amount
-// 4. spin
-// 5. Check
-// 6. Give the money
-// 7. Play again
-
-
 prompt = require("prompt-sync")();
 
 const MAX_LINES = 3;
@@ -16,23 +5,33 @@ const MIN_LINES = 1;
 const ROWS = 3;
 const COLS = 3;
 
-const reelsSymbol = ['🍒', '🍋', '🍊', '🍇', '🍉'];
-
-const SYMBOL_COUNT = {
-    '🍒': 2,
-    '🍋': 6,
-    '🍊': 8,
-    '🍇': 10,
 
 
-};
+const SYMBOLS = [
+    {
+        symbol: '🍒',
+        count: 2,
+        value: 5,
+    },
+    {
+        symbol: '🍋',
+        count: 4,
+        value: 4,
+    },
+    {
+        symbol: '🍊',
+        count: 6,
+        value: 3,
+    },
+    {
+        symbol: '🍇',
+        count: 8,
+        value: 2,
+    },
 
-const SYMBOL_VALUE = {
-    '🍒': 5,
-    '🍋': 4,
-    '🍊': 3,
-    '🍇': 2,
-};
+]
+
+const mappedSymbols = SYMBOLS.reduce((acc, curr) => { acc[curr.symbol] = curr.value; return acc }, {})
 
 const deposit = () => {
     while (true) {
@@ -76,13 +75,13 @@ const getBet = (balance, numberOfLines) => {
 
 const spine = () => {
     const symbols = [];
-    for (const [symbol, count] of Object.entries(SYMBOL_COUNT)) {
-
+    SYMBOLS.forEach(({ symbol, count }) => {
         for (let i = 0; i < count; i++) {
             symbols.push(symbol);
-
         }
     }
+
+    );
 
     const reels = [[], [], []];
     for (let i = 0; i < COLS; i++) {
@@ -141,7 +140,7 @@ const getWinnings = (rows, betamount, lines) => {
             }
         }
         if (win) {
-            winning += SYMBOL_VALUE[symbol] * betamount;
+            winning += mappedSymbols[symbol] * betamount;
         }
     }
     return winning
@@ -158,10 +157,10 @@ const game = () => {
         transposedReel = trasnpose(reels)
         printRows(transposedReel)
 
-        winAmount = getWinnings(transposedReel, bet, numberOfLines)
-        balance += winAmount
+        const winnigs = getWinnings(transposedReel, bet, numberOfLines)
+        balance += winnigs
 
-            (winAmount === 0) ? console.log("You lost") : console.log("You won $" + winAmount.toString())
+        if (winnigs === 0) { console.log("You lost") } else console.log("You won $" + winnigs)
         if (balance === 0) {
             console.log("You are out of money")
             break
