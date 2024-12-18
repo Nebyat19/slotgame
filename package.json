@@ -1,0 +1,21 @@
+{
+  "name": "slotgame",
+  "version": "1.0.0",
+  "description": "slot machine game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "slotmachine"
+  ],
+  "author": "Nebyta bekele",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "prettier": "3.4.2"
+  }
+}
