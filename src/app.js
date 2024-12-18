@@ -160,9 +160,14 @@ const game = () => {
 
         winAmount = getWinnings(transposedReel, bet, numberOfLines)
         balance += winAmount
-        console.log("You won $" + winAmount.toString())
-        console.log("Your Balance: $" + balance)
-        let playAgain = prompt("Do you want to play again? [y/n]: ")
+
+            (winAmount === 0) ? console.log("You lost") : console.log("You won $" + winAmount.toString())
+        if (balance === 0) {
+            console.log("You are out of money")
+            break
+        }
+        console.log("Balance: $" + balance)
+        let playAgain = prompt("play again? [y/n]: ")
         if (playAgain !== 'y') {
             break
         }
