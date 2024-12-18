@@ -47,8 +47,8 @@ const deposit = () => {
 
 function getNumberOfLines() {
     while (true) {
-        let lines = prompt("Lines: ");
-        if (validateNumber(lines) || lines >= MIN_LINES || lines <= MAX_LINES) {
+        let lines = prompt("Lines [1-3]: ");
+        if (validateNumber(lines) && lines >= MIN_LINES && lines <= MAX_LINES) {
             return lines;
         }
         console.log("Invalid number of lines");
@@ -128,7 +128,7 @@ function printRows(rows) {
 
 }
 
-const getWinning = (rows, betamount, lines) => {
+const getWinnings = (rows, betamount, lines) => {
     let winning = 0;
     for (let i = 0; i < lines; i++) {
         let line = rows[i];
@@ -146,12 +146,29 @@ const getWinning = (rows, betamount, lines) => {
     }
     return winning
 }
-let balance = deposit();
-const numberOfLines = getNumberOfLines();
-const bet = getBet(balance, numberOfLines);
-const reels = spine()
-transposedReel = trasnpose(reels)
-printRows(transposedReel)
+const game = () => {
+    let balance = deposit();
 
-winAmount = getWinning(transposedReel, bet, numberOfLines)
-console.log(winAmount)
+    while (true) {
+        console.log("Your Balance: $" + balance)
+        const numberOfLines = getNumberOfLines();
+        const bet = getBet(balance, numberOfLines);
+        balance -= bet * numberOfLines
+        const reels = spine()
+        transposedReel = trasnpose(reels)
+        printRows(transposedReel)
+
+        winAmount = getWinnings(transposedReel, bet, numberOfLines)
+        balance += winAmount
+        console.log("You won $" + winAmount.toString())
+        console.log("Your Balance: $" + balance)
+        let playAgain = prompt("Do you want to play again? [y/n]: ")
+        if (playAgain !== 'y') {
+            break
+        }
+
+    }
+
+}
+
+game()
